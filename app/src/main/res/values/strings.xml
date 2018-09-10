@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Nearby Foursquare Venues</string>
+
+    <string name="navigation_view_header_title">FourSquare Demo App</string>
+    <string name="location_permission_denied">No permission to get location</string>
+    <string name="unable_to_pick_place">Unable to pick a place on the map</string>
+
+    <!-- foursquare API -->
+    <string name="foursquare_api_baseUrl">https://api.foursquare.com</string>
+    <string name="foursquare_api_version">20180906</string>
+    <string name="foursquare_api_clientid">AQRXCYJIWOZJ1MAZTAYSWHISHH3NYFWETBD1CKCBHBMB4IWM</string>
+    <string name="foursquare_api_clientsecret">B0JCT4GLZK0XCNELV5JZP1RQ0KZLAUDVXL3PBMZ2ZL3QXXTK</string>
+
+    <!-- Adyen main office -->
+    <string name="default_location">52.3765043,4.903701</string>
+
+    <!-- top menu: -->
+    <string name="menu_refresh">Refresh Location</string>
+
+    <!-- drawer: -->
+    <string name="list_map">Map</string>
+
+    <!-- snackbar messages -->
+    <string name="message_onrefresh">Loading..</string>
+    <string name="message_new_location">New Location</string>
+
+</resources>

@@ -1,0 +1,159 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion '27.0.3'
+
+    defaultConfig {
+        applicationId "com.adyen.android"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled true
+            // Uses new built-in shrinker http://tools.android.com/tech-docs/new-build-system/built-in-shrinker
+            useProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguardTest-rules.pro'
+        }
+
+        release {
+            minifyEnabled true
+            useProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguardTest-rules.pro'
+        }
+    }
+    flavorDimensions "default"
+
+    // If you need to add more flavors, consider using flavor dimensions.
+    productFlavors {
+//        mock {
+//            dimension "default"
+//            applicationIdSuffix = ".mock"
+//        }
+        prod {
+            dimension "default"
+        }
+    }
+
+    // Remove mockRelease as it's not needed.
+//    android.variantFilter { variant ->
+//        if (variant.buildType.name == 'release'
+//                && variant.getFlavors().get(0).name == 'mock') {
+//            variant.setIgnore(true)
+//        }
+//    }
+
+    // Always show the result of every unit test, even if it passes.
+//    testOptions.unitTests.all {
+//        testLogging {
+//            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+//        }
+//    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+/*
+ Dependency versions are defined in the top level build.gradle file. This helps keeping track of
+ all versions in a single place. This improves readability and helps managing project complexity.
+ */
+dependencies {
+
+    // App's dependencies, including test
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:support-v4:$rootProject.supportLibraryVersion"
+    implementation "com.google.guava:guava:$rootProject.guavaVersion"
+
+    // Architecture Components
+    compile "android.arch.persistence.room:runtime:$rootProject.roomVersion"
+    annotationProcessor "android.arch.persistence.room:compiler:$rootProject.roomVersion"
+    compile "android.arch.lifecycle:extensions:$rootProject.archLifecycleVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$rootProject.archLifecycleVersion"
+
+    // Dependencies for local unit tests
+    testCompile "junit:junit:$rootProject.ext.junitVersion"
+//    testCompile "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
+    testCompile "org.hamcrest:hamcrest-all:$rootProject.ext.hamcrestVersion"
+    testCompile "android.arch.core:core-testing:$rootProject.archLifecycleVersion"
+
+    // Android Testing Support Library's runner and rules
+    androidTestCompile "com.android.support.test:runner:$rootProject.ext.runnerVersion"
+    androidTestCompile "com.android.support.test:rules:$rootProject.ext.rulesVersion"
+    androidTestCompile "android.arch.persistence.room:testing:$rootProject.roomVersion"
+
+    // Dependencies for Android unit tests
+    androidTestCompile "junit:junit:$rootProject.ext.junitVersion"
+//    androidTestCompile "org.mockito:mockito-core:$rootProject.ext.mockitoVersion"
+    androidTestCompile 'com.google.dexmaker:dexmaker:1.2'
+    androidTestCompile 'com.google.dexmaker:dexmaker-mockito:1.2'
+
+    // Espresso UI Testing
+    androidTestCompile "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
+    androidTestCompile "com.android.support.test.espresso:espresso-contrib:$rootProject.espressoVersion"
+    androidTestCompile "com.android.support.test.espresso:espresso-intents:$rootProject.espressoVersion"
+    androidTestCompile "com.android.support.test.espresso.idling:idling-concurrent:$rootProject.espressoVersion"
+    compile "com.android.support.test.espresso:espresso-idling-resource:$rootProject.espressoVersion"
+
+    // Resolve conflicts between main and test APK:
+    androidTestCompile "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
+    androidTestCompile "com.android.support:support-v4:$rootProject.supportLibraryVersion"
+    androidTestCompile "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    androidTestCompile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    androidTestCompile "com.android.support:support-compat:$rootProject.supportLibraryVersion"
+    androidTestCompile "com.android.support:design:$rootProject.supportLibraryVersion"
+    compile 'com.google.code.findbugs:jsr305:2.0.1'
+
+    // Deedee added:
+
+    implementation "com.google.android.gms:play-services-location:$rootProject.playServicesVersion"
+//    implementation "com.google.android.gms:play-services-maps:$rootProject.playServicesVersion"
+    implementation "com.google.android.gms:play-services-places:$rootProject.playServicesVersion"
+
+    //Retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.4.0'
+
+    //compile 'com.squareup.retrofit2:adapter-rxjava:2.4.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+
+    //compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+    // Retrofit XML converter (Simple)
+    compile 'com.squareup.retrofit2:converter-simplexml:2.4.0'
+    compile 'com.squareup.okhttp3:okhttp:3.10.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.7.0'
+    compile 'me.tatarka:gradle-retrolambda:3.7.0'
+
+    //RxAndroid
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.2'
+
+    // Because RxAndroid releases are few and far between, it is recommended you also
+
+    // explicitly depend on RxJava's latest version for bug fixes and new features.
+
+    // (see https://github.com/ReactiveX/RxJava/releases for latest 2.x.x version)
+    compile 'io.reactivex.rxjava2:rxjava:2.1.14'
+
+    //Gson
+    compile 'com.google.code.gson:gson:2.4'
+
+    implementation 'com.squareup.picasso:picasso:2.71828'
+}
