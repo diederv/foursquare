@@ -39,7 +39,6 @@ public class VenuesAdapter extends BaseAdapter {
                          VenuesViewModel tasksViewModel) {
         mTasksViewModel = tasksViewModel;
         setList(venues);
-
     }
 
     public void replaceData(List<Venue> venues) {
@@ -67,7 +66,6 @@ public class VenuesAdapter extends BaseAdapter {
         if (view == null) {
             // Inflate
             LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-
             // Create the binding
             binding = VenueItemBinding.inflate(inflater, viewGroup, false);
         } else {

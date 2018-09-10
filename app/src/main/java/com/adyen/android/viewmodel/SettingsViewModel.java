@@ -77,7 +77,7 @@ public class SettingsViewModel extends ObservableViewModel {
 
     @Bindable
     public String getRadiusStr() {
-        return Integer.toString(radius);
+        return Integer.toString(radius) + " m";
     }
 
     public static SettingsViewModel obtainInstance(FragmentActivity activity) {

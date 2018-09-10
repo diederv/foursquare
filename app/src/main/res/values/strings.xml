@@ -20,7 +20,7 @@
     <string name="menu_refresh">Refresh Location</string>
 
     <!-- drawer: -->
-    <string name="list_map">Map</string>
+    <string name="list_map">Pick a place</string>
 
     <!-- snackbar messages -->
     <string name="message_onrefresh">Loading..</string>
