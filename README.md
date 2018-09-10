@@ -60,5 +60,5 @@ public interface FourSquareSearch {
 ```
 #### The UI
 
-
-![App Icon](master/imgages/Screenshot_0.jpg?raw=true "App Icon")
+![App Icon](/diederv/foursquare/master/imgages/Screenshot_0.jpg?raw=true "App Icon")
+![App Icon](https://raw.githubusercontent.com/diederv/foursquare/master/imgages/Screenshot_0.jpg "App Icon")
