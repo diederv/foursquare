@@ -59,3 +59,6 @@ public interface FourSquareSearch {
 }
 ```
 #### The UI
+
+
+![App Icon](master/imgages/Screenshot_0.jpg?raw=true "App Icon")
