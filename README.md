@@ -60,5 +60,60 @@ public interface FourSquareSearch {
 ```
 #### The UI
 
-![App Icon](/diederv/foursquare/master/imgages/Screenshot_0.jpg?raw=true "App Icon")
+__The App Icon__
 ![App Icon](https://raw.githubusercontent.com/diederv/foursquare/master/imgages/Screenshot_0.jpg "App Icon")
+
+__The Main Screen__
+![App Icon](https://raw.githubusercontent.com/diederv/foursquare/master/imgages/Screenshot_1.jpg "Main screen")
+
+__Using 'Pull To Refresh'__
+![App Icon](https://raw.githubusercontent.com/diederv/foursquare/master/imgages/Screenshot_2.jpg "Pull to Refresh")
+
+__Selecting a venue opens the detail screen__
+![App Icon](https://raw.githubusercontent.com/diederv/foursquare/master/imgages/Screenshot_3.jpg "Selecting a Venue")
+Note: Error 429 shows up, indicating 'Too Many Requests'
+
+Selecting the 'Settings Icon' on the top right
+![App Icon](https://raw.githubusercontent.com/diederv/foursquare/master/imgages/Screenshot_4.jpg "The Settings Icon")
+
+The Settings screen, where the radius can be changed.
+![App Icon](https://raw.githubusercontent.com/diederv/foursquare/master/imgages/Screenshot_5.jpg "The Settings Screen")
+Note: unfortunately the radius doesn't work with the endpoint that I selected for this app :-(
+Foursquare: "Limit results to venues within this many meters of the specified location. Defaults to a city-wide area. Only valid for requests with intent=browse, or requests with intent=checkin and categoryId or query. Does not apply to intent=match requests. The maximum supported radius is currently 100,000 meters.""
+
+Opening the Drawer by seleting the Home ('Hamburger') icon or by swiping from the left edge to the right..
+![App Icon](https://raw.githubusercontent.com/diederv/foursquare/master/imgages/Screenshot_6.jpg "The Drawer")
+
+Pick an alternative Place with the Google Maps integration
+![App Icon](https://raw.githubusercontent.com/diederv/foursquare/master/imgages/Screenshot_7.jpg "Pick an alternative Place")
+
+#### Unfortunately
+
+Unfortunately, considering the limited timeframe I had to implement this challenge, I wasn't able to:
+- Create any test
+- Optimize the 'Pull to Refresh' which often is 'in the way' to scroll back up
+- To let the 'settings-radius' have any influence on the search results
+- To fix the 429 http error for the Venbue detail-page by creating another account. (Did I really create too many requests!?)
+
+Note:
+I removed the following personal codes from the App:
+
+- from the AndroidManifest.xml:        
+```xml
+<meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="{secret}"/>
+```
+
+- from res/values/string.xml
+
+```xml
+    <string name="foursquare_api_clientid">{secret}</string>
+    <string name="foursquare_api_clientsecret">{secret}</string>
+```
+
+Please ask me for the values that make this app work! :-)
+
+:-)
+Regards,
+Diederick Verweij
